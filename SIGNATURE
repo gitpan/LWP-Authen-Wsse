@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.38.
+signed via the Module::Signature module, version 0.40.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,12 +14,12 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 27fc497f029716dbcc60f976e0aa46e315a857ff Changes
+SHA1 c6ccfb6ea90bbab97913f9e1688dc42584aa7609 Changes
 SHA1 dad939b70f2ba7aaa483f06e441fccfa4fe6f464 MANIFEST
-SHA1 d5499daff7eb896c75d336e2ccf983e7bfe84feb META.yml
+SHA1 5a57f49097b5e6fd1d484c193aa14c51dd4efe78 META.yml
 SHA1 e8328284368461b1e7becd11f115b3abbaa54c41 Makefile.PL
 SHA1 de4bc0cd737ec878af5da59121be1d53e6bf9451 README
-SHA1 2b65fc08c268c16ae7097d800bacccc7b8c9c905 inc/Module/Install.pm
+SHA1 5c3c99e6273ec64d0b63ac6b7817807557b46c97 inc/Module/Install.pm
 SHA1 fd56d5c793014bccac2cd1e61926c4da8538ef99 inc/Module/Install/Base.pm
 SHA1 9ce6768a7b8f7032ec89594b773fafd58c6feb1d inc/Module/Install/Can.pm
 SHA1 b6c8f0f22c4c8ba48a7bac2c5e4bd61803a7b097 inc/Module/Install/Fetch.pm
@@ -27,12 +27,12 @@ SHA1 aabcd47178e4e7b27e340ff5273269c93697c9c1 inc/Module/Install/Makefile.pm
 SHA1 207dfa13341a374fc78325fbeb99bc36659aef2d inc/Module/Install/Metadata.pm
 SHA1 aff9341a15c04faec47089851e43d9d4061337e7 inc/Module/Install/Win32.pm
 SHA1 8e0d347ca21bc18b380d9d1aa5910b8d078a76b7 inc/Module/Install/WriteAll.pm
-SHA1 8586d030bc1c6441f32165ba572c06aa1100e86a lib/LWP/Authen/Wsse.pm
+SHA1 632413e0eb625e6b0538329c765b19bc4837f25a lib/LWP/Authen/Wsse.pm
 SHA1 96d1e63bc12f1384dccf6eb2c0b4a231c776eb58 t/0-signature.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.3 (FreeBSD)
 
-iD8DBQFAvOi6tLPdNzw1AaARAkVjAJ9kYO5v2k/lBewRU6kWwBPshOBd5gCghpIC
-g9jkia/uHRTwng1Q97ODdaU=
-=v2Aw
+iD8DBQFA8Z+XtLPdNzw1AaARAssZAKCAgUOdifsyGvo9KugJfl2Zsd5ePACfa6tC
+zZCCip9yYYPOw4ZU9KtLF/E=
+=lxNu
 -----END PGP SIGNATURE-----

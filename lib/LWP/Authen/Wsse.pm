@@ -1,5 +1,5 @@
 package LWP::Authen::Wsse;
-$LWP::Authen::Wsse::VERSION = '0.03';
+$LWP::Authen::Wsse::VERSION = '0.04';
 
 use strict;
 use Digest::SHA1 ();
@@ -11,8 +11,8 @@ LWP::Authen::Wsse - Library for enabling X-WSSE authentication in LWP
 
 =head1 VERSION
 
-This document describes version 0.03 of LWP::Authen::Wsse, released
-June 2, 2004.
+This document describes version 0.04 of LWP::Authen::Wsse, released
+July 11, 2004.
 
 =head1 SYNOPSIS
 
@@ -122,7 +122,7 @@ sub now_w3cdtf {
     $mon++; $year += 1900;
 
     return sprintf(
-        "%02s-%02s-%02sT%02s:%02s:%02sZ",
+        "%04s-%02s-%02sT%02s:%02s:%02sZ",
         $year, $mon, $mday, $hour, $min, $sec,
     );
 }
