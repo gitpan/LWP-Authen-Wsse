@@ -1,5 +1,5 @@
 name: LWP-Authen-Wsse
-version: 0.01
+version: 0.02
 abstract: Library for enabling X-WSSE authentication in LWP
 author: Autrijus Tang <autrijus@autrijus.org>
 license: perl

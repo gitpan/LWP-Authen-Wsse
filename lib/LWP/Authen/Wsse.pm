@@ -1,5 +1,5 @@
 package LWP::Authen::Wsse;
-$LWP::Authen::Wsse::VERSION = '0.01';
+$LWP::Authen::Wsse::VERSION = '0.02';
 
 use strict;
 use Digest::SHA1 ();
@@ -11,8 +11,8 @@ LWP::Authen::Wsse - Library for enabling X-WSSE authentication in LWP
 
 =head1 VERSION
 
-This document describes version 0.01 of LWP::Authen::Wsse, released
-May 16, 2004.
+This document describes version 0.02 of LWP::Authen::Wsse, released
+June 2, 2004.
 
 =head1 SYNOPSIS
 
@@ -30,10 +30,10 @@ May 16, 2004.
     print "--Done with request-------------------\n";
 
     if ($response->is_success) {
-	print "It worked!->", $response->code, "\n";
+        print "It worked!->", $response->code, "\n";
     }
     else {
-	print "It didn't work!->", $response->code, "\n";
+        print "It didn't work!->", $response->code, "\n";
     }
 
 =head1 DESCRIPTION
@@ -60,21 +60,27 @@ sub authenticate {
        $request, $arg, $size) = @_;
 
     my ($user, $pass) = $ua->get_basic_credentials(
-	$auth_param->{realm}, $request->url, $proxy
+        $auth_param->{realm},
+        $request->url,
+        $proxy,
     );
+
     return $response unless (defined $user and defined $pass);
 
+    my $now = $class->now_w3cdtf;
     my $nonce = $class->make_nonce;
     my $nonce_enc = MIME::Base64::encode_base64($nonce, '');
-    my $now = $class->now_w3cdtf;
     my $digest = MIME::Base64::encode_base64(
         Digest::SHA1::sha1($nonce . $now . $pass), ''
     );
 
-    my $auth_header = $proxy ? 'Proxy-Authorization' : 'Authorization';
-    my $wsse_value = sprintf(
-	'UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"',
-        $user, $digest, $nonce_enc, $now,
+    my $auth_header = ($proxy ? 'Proxy-Authorization' : 'Authorization');
+    my $wsse_value = 'UsernameToken ' . join(
+        ', ',
+        qq(Username="$user"),
+        qq(PasswordDigest="$digest"),
+        qq(Nonce="$nonce_enc"),
+        qq(Created="$now"),
     );
 
     my $referral = $request->clone;
@@ -83,22 +89,23 @@ sub authenticate {
     my $r = $response;
     my $failed;
     while ($r) {
-	my $prev = $r->request->{wsse_user_pass};
-	if ($r->code == 401
-	    and $prev
-	    and $prev->[0] eq $user
-	    and $prev->[1] eq $pass
-	    and $failed++
-	) {
-	    # here we know this failed before
-	    $response->header('Client-Warning' =>
-			      "Credentials for '$user' failed before");
-	    return $response;
-	}
-	$r = $r->previous;
+        my $prev = $r->request->{wsse_user_pass};
+        if ($r->code == 401
+            and $prev
+            and $prev->[0] eq $user
+            and $prev->[1] eq $pass
+            and $failed++
+        ) {
+            # here we know this failed before
+            $response->header(
+                'Client-Warning' => "Credentials for '$user' failed before"
+            );
+            return $response;
+        }
+        $r = $r->previous;
     }
 
-    $referral->header($auth_header, 'WSSE profile="UsernameToken"');
+    $referral->header($auth_header => 'WSSE profile="UsernameToken"');
     $referral->header('X-WSSE' => $wsse_value);
 
     $referral->{wsse_user_pass} = [$user, $pass];
@@ -115,8 +122,8 @@ sub now_w3cdtf {
     $mon++; $year += 1900;
 
     return sprintf(
-	"%02s-%02s-%02sT%02s:%02s:%02sZ",
-	$year, $mon, $mday, $hour, $min, $sec
+        "%02s-%02s-%02sT%02s:%02s:%02sZ",
+        $year, $mon, $mday, $hour, $min, $sec,
     );
 }
 
