@@ -1,6 +1,3 @@
-# $File: /member/local/autrijus/Win32-Exe/README $ $Author: autrijus $
-# $Revision: #5 $ $Change: 1505 $ $Date: 2004-02-17T15:40:29.640821Z $
-
 This is the README file for LWP::Authen::Wsse, a library for enabling
 X-WSSE authentication in LWP.
 
@@ -11,15 +8,15 @@ the module usage information.
 
 LWP::Authen::Wsse uses the standard perl module install process:
 
-cpansign -v		# optional; see SIGNATURE for details
-perl Makefile.PL
-make			# or 'nmake' on Win32
-make test
-make install
+    cpansign -v         # optional; see SIGNATURE for details
+    perl Makefile.PL
+    make                # or 'nmake' on Win32
+    make test
+    make install
 
 * Copyright
 
-Copyright 2004 by Autrijus Tang <autrijus@autrijus.org>.
+Copyright 2004, 2005 by Audrey Tang <audrey@audrey.org>.
 
 All rights reserved.  You can redistribute and/or modify
 this bundle under the same terms as Perl itself.

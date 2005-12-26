@@ -1,23 +1,17 @@
-----------------------------------------------------------------------
-r5961:  autrijus | 2004-07-11T20:13:33.034794Z
+[Changes for 0.05 - 2005-12-27]
 
-* This be 0.04.
-----------------------------------------------------------------------
-r5611:  autrijus | 2004-06-15T13:18:45.157068Z
+* In nonce generation, use only one round of SHA1 instead of two,
+  as an extra SHA1 hash doesn't make things any more unpredictable.
 
-* use 4-digit years.
-----------------------------------------------------------------------
-r5310:  autrijus | 2004-06-02T04:55:26.332520Z
+[Changes for 0.04 - 2004-07-11]
 
-* This be 0.03.
-* Ben Trott spotted a mis-assignment on w3cdtf_now.
+* Use 4-digit years.
 
-----------------------------------------------------------------------
-r4925:  autrijus | 2004-05-16T13:06:54.807382Z
+[Changes for 0.03 - 2004-06-02]
 
-* changes and signatures.
-----------------------------------------------------------------------
-r4924:  autrijus | 2004-05-16T13:05:21.677461Z
+* Corrected a mis-assignment on w3cdtf_now.
+  Reported by: Benjamin Trott
+
+[Changes for 0.01 - 2004-05-16]
 
 * Initial commit of LWP::Authen::Wsse.
-----------------------------------------------------------------------
